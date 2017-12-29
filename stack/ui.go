@@ -63,11 +63,16 @@ func (p *Palette) functionColor(line *Call) string {
 			return p.FunctionStdLibExported
 		}
 		return p.FunctionStdLib
-	} else if line.IsPkgMain() {
+	}
+
+	if line.IsPkgMain() {
 		return p.FunctionMain
-	} else if line.Func.IsExported() {
+	}
+
+	if line.Func.IsExported() {
 		return p.FunctionOtherExported
 	}
+
 	return p.FunctionOther
 }
 
